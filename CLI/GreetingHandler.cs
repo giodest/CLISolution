@@ -11,9 +11,9 @@ namespace CLI
 {
     public class GreetingHandler
     {
-        public void Greet(string name, int age)
+        public void Greet(string name, string surname, int age)
         {
-            Console.WriteLine($"Ciao, {name}! Hai {age} anni.");
+            Console.WriteLine($"Ciao, {name} {surname}! Hai {age} anni.");
         }
     }
 }

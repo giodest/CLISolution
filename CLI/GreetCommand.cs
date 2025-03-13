@@ -14,10 +14,15 @@ namespace CLI
         {
             var greetCommand = new Command("greet")
             {
-                new Option<string>(
-                    "--name",
+                new Argument<string>(
+                    "name",
                     description: "Il nome della persona"
-                ) { IsRequired = true },
+                ),
+
+                new Argument<string>(
+                    "surname",
+                    description: "Il cognome della persona"
+                ),
 
                 new Argument<int>(
                     "age",
@@ -25,10 +30,10 @@ namespace CLI
                 ) { Arity = ArgumentArity.ExactlyOne }
             };
 
-            greetCommand.Handler = CommandHandler.Create((string name, int age) =>
+            greetCommand.Handler = CommandHandler.Create((string name, string surname, int age) =>
             {
                 var greetingHandler = new GreetingHandler(); 
-                greetingHandler.Greet(name, age);
+                greetingHandler.Greet(name, surname, age);
                 return Task.CompletedTask;
             });
 
